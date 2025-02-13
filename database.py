@@ -4,8 +4,7 @@ import json
 import os
 import streamlit as st
 
-firebase_credentials = json.loads(st.secrets["FIREBASE_CREDENTIALS"])
-
+firebase_credentials = st.secrets["FIREBASE_CREDENTIALS"]
 class DatabaseManager:
     def __init__(self):
         db_url = "https://mapa-doctrinario-default-rtdb.firebaseio.com/"  # URL extraída del enlace proporcionado
