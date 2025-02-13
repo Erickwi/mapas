@@ -1,11 +1,16 @@
 import firebase_admin
 from firebase_admin import credentials, db
+import json
+import os
+import streamlit as st
+
+firebase_credentials = json.loads(st.secrets["FIREBASE_CREDENTIALS"])
 
 class DatabaseManager:
-    def __init__(self, cred_file='firebase_credenciales.json'):
+    def __init__(self):
         db_url = "https://mapa-doctrinario-default-rtdb.firebaseio.com/"  # URL extraída del enlace proporcionado
         if not firebase_admin._apps:  # Verifica si Firebase ya está inicializado
-            cred = credentials.Certificate(cred_file)
+            cred = credentials.Certificate(firebase_credentials)
             firebase_admin.initialize_app(cred, {"databaseURL": db_url})
         self.ref = db.reference("manuales")
 
