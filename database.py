@@ -1,7 +1,5 @@
 import firebase_admin
 from firebase_admin import credentials, db
-import json
-import os
 import streamlit as st
 
 firebase_credentials = st.secrets["FIREBASE_CREDENTIALS"]

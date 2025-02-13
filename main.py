@@ -33,7 +33,7 @@ def main():
     menu = ["Inicio", "Agregar Manual", "Ver Mapa", "Modificar Manual", "Generar Excel", "Borrar Manual"]
     choice = st.sidebar.radio("Seleccione una opción:", menu)
 
-    db = DatabaseManager("firebase_credenciales.json")  # Solo la credencial
+    db = DatabaseManager(st.secrets["FIREBASE_CREDENTIALS"])
 
     # Navegar entre las opciones
     if choice == "Inicio":
