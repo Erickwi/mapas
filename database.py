@@ -4,10 +4,11 @@ import streamlit as st
 
 firebase_credentials = st.secrets["FIREBASE_CREDENTIALS"]
 class DatabaseManager:
-    def __init__(self):
-        db_url = "https://mapa-doctrinario-default-rtdb.firebaseio.com/"  # URL extraída del enlace proporcionado
+    def __init__(self, firebase_credentials=None):
+        db_url = "https://mapa-doctrinario-default-rtdb.firebaseio.com/"  # URL de la base de datos
         if not firebase_admin._apps:  # Verifica si Firebase ya está inicializado
-            cred = credentials.Certificate(firebase_credentials)
+            # Si las credenciales son proporcionadas, las usa; de lo contrario, usa las predeterminadas
+            cred = credentials.Certificate(firebase_credentials if firebase_credentials else st.secrets["FIREBASE_CREDENTIALS"])
             firebase_admin.initialize_app(cred, {"databaseURL": db_url})
         self.ref = db.reference("manuales")
 
