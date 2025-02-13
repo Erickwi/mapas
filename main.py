@@ -1,5 +1,5 @@
 import streamlit as st
-from database import DatabaseManager  # Asegúrate de usar la nueva versión con Firebase
+from database import DatabaseManager
 from forms import ManualForm
 from visualization import Visualization
 from excel_generator import ExcelGenerator
@@ -33,7 +33,8 @@ def main():
     menu = ["Inicio", "Agregar Manual", "Ver Mapa", "Modificar Manual", "Generar Excel", "Borrar Manual"]
     choice = st.sidebar.radio("Seleccione una opción:", menu)
 
-    db = DatabaseManager(st.secrets["FIREBASE_CREDENTIALS"])
+    db_file = "doctrina.db"  # Ruta al archivo de la base de datos SQLite
+    db = DatabaseManager(db_file)
 
     # Navegar entre las opciones
     if choice == "Inicio":
@@ -44,19 +45,17 @@ def main():
         ManualForm.agregar_manual_form(db)
     elif choice == "Ver Mapa":
         st.title("🗺️ Mapa Doctrinario Filtrado")
-        Visualization.mostrar_mapa_filtrado(db)
+        Visualization.mostrar_mapa_filtrado(db_file)
     elif choice == "Modificar Manual":
         st.title("✏️ Modificar Manual")
         manual_id = st.text_input("ID del Manual a Modificar:")
-        if manual_id:
-            ManualForm.modificar_manual_form(db, manual_id)
+        # Aquí puedes agregar el código para modificar el manual
     elif choice == "Generar Excel":
         st.title("📊 Generar Excel")
-        st.write("Selecciona las opciones de filtro antes de generar el archivo Excel.")
-        ExcelGenerator.generar_excel_filtrado(db)
+        ExcelGenerator.generar_excel_filtrado(db_file)
     elif choice == "Borrar Manual":
         st.title("🗑️ Borrar Manual")
-        ManualForm.borrar_manual_form(db)
+        # Aquí puedes agregar el código para borrar el manual
 
 if __name__ == "__main__":
     main()
