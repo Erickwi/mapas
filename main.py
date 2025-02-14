@@ -56,7 +56,7 @@ def main():
         ExcelGenerator.generar_excel_filtrado(db_file)
     elif choice == "Borrar Manual":
         st.title("🗑️ Borrar Manual")
-        ManualForm.borrar_manual_form(db_file)
+        ManualForm.borrar_manual_form(db)
 
 if __name__ == "__main__":
     main()
