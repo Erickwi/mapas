@@ -51,15 +51,49 @@ class Visualization:
         df = df.drop(columns=["ID", "id_categoria"], errors='ignore')
 
         # 🔹 Agregando filtros en el menú lateral (sidebar)
-        st.sidebar.header("🔍 Filtros")
-        categorias_y = st.sidebar.multiselect("Filtrar por Categoría Y:", df["Categoría Y"].unique())  # Moved to top
-        categorias_x = st.sidebar.multiselect("Filtrar por Categoría X:", df["Categoría X"].unique())
-        subcategorias_x = st.sidebar.multiselect("Filtrar por Subcategoría X:", df["Subcategoría X"].unique())
-        años = st.sidebar.multiselect("Filtrar por Año:", sorted(df["Año"].unique(), reverse=True))
-        estados = st.sidebar.multiselect("Filtrar por Estado:", df["Estado"].unique())
+        # 🔹 Agregando filtros en el menú lateral (sidebar)
+        st.sidebar.header("🔍 Filtros por Categorías")
+        
+        # Todas las categorías primero
+        categorias_y = st.sidebar.multiselect(
+            "Categoría Principal:",
+            sorted(df["Categoría Y"].unique())
+        )
+        
+        categorias_x = st.sidebar.multiselect(
+            "Categoría:",
+            sorted(df["Categoría X"].unique())
+        )
+        
+        # Filtrar subcategorías basadas en la categoría X seleccionada
+        subcategorias_disponibles = []
+        if categorias_x:
+            subcategorias_disponibles = sorted(
+                df[df["Categoría X"].isin(categorias_x)]["Subcategoría X"].unique()
+            )
+        
+        subcategorias_x = st.sidebar.multiselect(
+            "Subcategoría:",
+            subcategorias_disponibles
+        )
 
-        # 🔹 Aplicar filtros seleccionados
-        if categorias_y:  # Moved to first position
+        # Separador para otros filtros
+        st.sidebar.markdown("---")
+        st.sidebar.header("🔍 Filtros Adicionales")
+        
+        # Filtros adicionales
+        años = st.sidebar.multiselect(
+            "Año:",
+            sorted(df["Año"].unique(), reverse=True)
+        )
+        
+        estados = st.sidebar.multiselect(
+            "Estado:",
+            sorted(df["Estado"].unique())
+        )
+
+        # 🔹 Aplicar filtros en orden
+        if categorias_y:
             df = df[df["Categoría Y"].isin(categorias_y)]
         if categorias_x:
             df = df[df["Categoría X"].isin(categorias_x)]
