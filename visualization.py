@@ -51,37 +51,46 @@ class Visualization:
         df = df.drop(columns=["ID", "id_categoria"], errors='ignore')
 
         # 🔹 Agregando filtros en el menú lateral (sidebar)
+        orden_categoria_y = [
+            "Manuales Fundamentales del Ejército",
+            "Manuales Fundamentales de Referencia del Ejército",
+            "Manuales de Campaña del Ejército",
+            "Manuales de Técnicas del Ejército",
+            "Manuales de Educación Militar",
+            "Manuales de Mantenimiento del Ejército",
+            "Manuales de Administrativo Funcional"
+        ]
+
+        # Ordenar las categorías Y según el orden personalizado
+        categorias_y_ordenadas = sorted(
+            df["Categoría Y"].unique(),
+            key=lambda x: orden_categoria_y.index(x) if x in orden_categoria_y else len(orden_categoria_y)
+        )
+
         # 🔹 Agregando filtros en el menú lateral (sidebar)
-        st.sidebar.header("🔍 Filtros por Categorías")
+        st.sidebar.header("🔍 Filtros")
         
-        # Todas las categorías primero
+        # Mostrar Categoría Y primero con orden personalizado
         categorias_y = st.sidebar.multiselect(
             "Categoría Principal:",
-            sorted(df["Categoría Y"].unique())
+            options=categorias_y_ordenadas,
+            help="Seleccione la categoría principal del manual"
         )
-        
+
+        # Resto de filtros
         categorias_x = st.sidebar.multiselect(
             "Categoría:",
             sorted(df["Categoría X"].unique())
         )
         
-        # Filtrar subcategorías basadas en la categoría X seleccionada
-        subcategorias_disponibles = []
-        if categorias_x:
-            subcategorias_disponibles = sorted(
-                df[df["Categoría X"].isin(categorias_x)]["Subcategoría X"].unique()
-            )
-        
         subcategorias_x = st.sidebar.multiselect(
             "Subcategoría:",
-            subcategorias_disponibles
+            sorted(df["Subcategoría X"].unique())
         )
 
-        # Separador para otros filtros
+        # Separador visual
         st.sidebar.markdown("---")
-        st.sidebar.header("🔍 Filtros Adicionales")
         
-        # Filtros adicionales
         años = st.sidebar.multiselect(
             "Año:",
             sorted(df["Año"].unique(), reverse=True)
@@ -111,14 +120,7 @@ class Visualization:
 
         # 🔹 Mostrar la tabla filtrada
         st.write("### 🗺️ Mapa Doctrinario Filtrado")
-
-        # Agregar opción para seleccionar orientación de la tabla
-        orientacion = st.radio("Selecciona la orientación de la tabla:", ("Horizontal", "Vertical"))
-
-        if orientacion == "Horizontal":
-            st.dataframe(df)
-        else:
-            st.dataframe(df.T)  # Transponer el DataFrame para mostrarlo verticalmente
+        st.dataframe(df)
 
 # Uso de la visualización
 if __name__ == "__main__":
