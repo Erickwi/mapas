@@ -55,7 +55,7 @@ def main():
         ExcelGenerator.generar_excel_filtrado(db_file)
     elif choice == "Borrar Manual":
         st.title("🗑️ Borrar Manual")
-        # Aquí puedes agregar el código para borrar el manual
+        ManualForm.borrar_manual_form(db_file)
 
 if __name__ == "__main__":
     main()
