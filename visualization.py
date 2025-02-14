@@ -77,7 +77,14 @@ class Visualization:
 
         # 🔹 Mostrar la tabla filtrada
         st.write("### 🗺️ Mapa Doctrinario Filtrado")
-        st.dataframe(df)
+
+        # Agregar opción para seleccionar orientación de la tabla
+        orientacion = st.radio("Selecciona la orientación de la tabla:", ("Horizontal", "Vertical"))
+
+        if orientacion == "Horizontal":
+            st.dataframe(df)
+        else:
+            st.dataframe(df.T)  # Transponer el DataFrame para mostrarlo verticalmente
 
 # Uso de la visualización
 if __name__ == "__main__":
