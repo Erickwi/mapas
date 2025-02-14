@@ -51,7 +51,7 @@ class ManualForm:
         if st.button("Agregar Manual"):
             if (categoria_x, subcategoria_x, categoria_y, nombre, anio, estado):
                 db.add_manual(categoria_x, subcategoria_x, categoria_y, nombre, anio, estado, subproceso_estado)
-                st.success(f"✅ Manual '{nombre}' agregado correctamente con ID {manual_id if manual_id else 'Asignado automáticamente'}.")
+                st.success(f"✅ Manual '{nombre}' agregado correctamente.")
             else:
                 st.error("❌ Todos los campos son obligatorios. Por favor, complete la información.")
 
