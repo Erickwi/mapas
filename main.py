@@ -49,7 +49,8 @@ def main():
     elif choice == "Modificar Manual":
         st.title("✏️ Modificar Manual")
         manual_id = st.text_input("ID del Manual a Modificar:")
-        # Aquí puedes agregar el código para modificar el manual
+        if manual_id:
+            ManualForm.modificar_manual_form(db, manual_id)
     elif choice == "Generar Excel":
         st.title("📊 Generar Excel")
         ExcelGenerator.generar_excel_filtrado(db_file)
