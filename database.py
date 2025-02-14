@@ -72,7 +72,7 @@ class DatabaseManager:
         """
         self.cursor.execute('DELETE FROM manuales WHERE id = ?', (manual_id,))
         self.conn.commit()
-        return self.cursor.rowcount > 0  # Retorna True si se eliminó algún registro
+        return self.cursor.rowcount > 0  # Devuelve True si se eliminó un registro
 
     def _convert_to_dict(self, row):
         """
