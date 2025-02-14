@@ -52,17 +52,17 @@ class Visualization:
 
         # 🔹 Agregando filtros en el menú lateral (sidebar)
         st.sidebar.header("🔍 Filtros")
+        categorias_y = st.sidebar.multiselect("Filtrar por Categoría Y:", df["Categoría Y"].unique())  # Moved to top
         categorias_x = st.sidebar.multiselect("Filtrar por Categoría X:", df["Categoría X"].unique())
-        categorias_y = st.sidebar.multiselect("Filtrar por Categoría Y:", df["Categoría Y"].unique())
         subcategorias_x = st.sidebar.multiselect("Filtrar por Subcategoría X:", df["Subcategoría X"].unique())
         años = st.sidebar.multiselect("Filtrar por Año:", sorted(df["Año"].unique(), reverse=True))
         estados = st.sidebar.multiselect("Filtrar por Estado:", df["Estado"].unique())
 
         # 🔹 Aplicar filtros seleccionados
+        if categorias_y:  # Moved to first position
+            df = df[df["Categoría Y"].isin(categorias_y)]
         if categorias_x:
             df = df[df["Categoría X"].isin(categorias_x)]
-        if categorias_y:
-            df = df[df["Categoría Y"].isin(categorias_y)]
         if subcategorias_x:
             df = df[df["Subcategoría X"].isin(subcategorias_x)]
         if años:
