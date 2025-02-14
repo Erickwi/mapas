@@ -3,6 +3,7 @@ import pandas as pd
 from io import BytesIO
 import numpy as np
 from database import DatabaseManager
+import xlsxwriter  # Asegúrate de que xlsxwriter esté importado
 
 class ExcelGenerator:
     @staticmethod
