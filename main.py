@@ -44,9 +44,17 @@ def main():
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             if st.button("Mapa Doctrinario"):
-                st.write("Mapa Doctrinario seleccionado")
+                st.session_state.menu_choice = "Mapa Doctrinario"
             if st.button("Mapa de Publicaciones Militares"):
+                st.session_state.menu_choice = "Mapa de Publicaciones Militares"
+        
+        if "menu_choice" in st.session_state:
+            if st.session_state.menu_choice == "Mapa Doctrinario":
+                st.write("Mapa Doctrinario seleccionado")
+                # Aquí puedes agregar el menú específico para "Mapa Doctrinario"
+            elif st.session_state.menu_choice == "Mapa de Publicaciones Militares":
                 st.write("Mapa de Publicaciones Militares seleccionado")
+                # Aquí puedes agregar el menú específico para "Mapa de Publicaciones Militares"
     elif choice == "Agregar Manual":
         st.title("➕ Agregar Manual")
         ManualForm.agregar_manual_form(db)
