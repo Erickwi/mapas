@@ -15,7 +15,7 @@ def main():
         if st.button("Mapa de Publicaciones Militares"):
             st.experimental_set_query_params(menu_choice="Mapa de Publicaciones Militares")
 
-    query_params = st.experimental_get_query_params()
+    query_params = st.query_params()
     if "menu_choice" in query_params:
         menu_choice = query_params["menu_choice"][0]
         if menu_choice == "Mapa Doctrinario":
