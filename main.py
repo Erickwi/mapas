@@ -11,19 +11,9 @@ def main():
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         if st.button("Mapa Doctrinario"):
-            st.experimental_set_query_params(menu_choice="Mapa Doctrinario")
+            st.switch_page("doctrinario.py")
         if st.button("Mapa de Publicaciones Militares"):
-            st.experimental_set_query_params(menu_choice="Mapa de Publicaciones Militares")
-
-    query_params = st.query_params()
-    if "menu_choice" in query_params:
-        menu_choice = query_params["menu_choice"][0]
-        if menu_choice == "Mapa Doctrinario":
-            st.write("Mapa Doctrinario seleccionado")
-            # Aquí puedes agregar el menú específico para "Mapa Doctrinario"
-        elif menu_choice == "Mapa de Publicaciones Militares":
-            st.write("Mapa de Publicaciones Militares seleccionado")
-            # Aquí puedes agregar el menú específico para "Mapa de Publicaciones Militares"
+            st.switch_page("app.py")
 
 if __name__ == "__main__":
     main()
