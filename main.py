@@ -40,6 +40,13 @@ def main():
     if choice == "Inicio":
         st.title("🏠 Bienvenido al Mapa Doctrinario del Ejército")
         st.write("Usa el menú de la izquierda para navegar por las opciones.")
+        st.image("cede.png", use_column_width=True)
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            if st.button("Mapa Doctrinario"):
+                st.write("Mapa Doctrinario seleccionado")
+            if st.button("Mapa de Publicaciones Militares"):
+                st.write("Mapa de Publicaciones Militares seleccionado")
     elif choice == "Agregar Manual":
         st.title("➕ Agregar Manual")
         ManualForm.agregar_manual_form(db)
