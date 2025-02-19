@@ -11,9 +11,9 @@ def main():
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         if st.button("Mapa Doctrinario"):
-            st.switch_page("pages/doctrinario.py")
+            st.switch_page("pages/Mapa_Doctrinario.py")
         if st.button("Mapa de Publicaciones Militares"):
-            st.switch_page("pages/public_militares.py")
+            st.switch_page("pages/Mapa_de_Publicaciones_Militares.py")
 
 if __name__ == "__main__":
     main()
