@@ -9,14 +9,7 @@ st.markdown(
     """
     <style>
     [data-testid="stSidebar"] {{
-        background-color: #d9d9d9 !important;
-        color: black !important;
-        z-index: 2;
-        box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
-    }}
-    [data-testid="stSidebar"] .css-1v3fvcr, [data-testid="stSidebar"] .css-qrbaxs {{
-        font-size: 20px !important;
-        color: black !important;
+        display: none;
     }}
     [data-testid="stAppViewContainer"] {{
         background-color: #f5f5dc !important;
@@ -27,11 +20,9 @@ st.markdown(
 )
 
 def main():
-    # Configurar menú lateral
-    st.sidebar.image("cede.png", use_container_width=True)
-    st.sidebar.markdown("<h1>Menú</h1>", unsafe_allow_html=True)
+    # Configurar menú principal
     menu = ["Inicio", "Agregar Manual", "Ver Mapa", "Modificar Manual", "Generar Excel", "Borrar Manual"]
-    choice = st.sidebar.radio("Seleccione una opción:", menu)
+    choice = st.selectbox("Seleccione una opción:", menu)
 
     db_file = "doctrina.db"  # Ruta al archivo de la base de datos SQLite
     db = DatabaseManager(db_file)
@@ -39,8 +30,8 @@ def main():
     # Navegar entre las opciones
     if choice == "Inicio":
         st.title("🏠 Bienvenido al Mapa Doctrinario del Ejército")
-        st.write("Usa el menú de la izquierda para navegar por las opciones.")
-        st.image("cede.png", use_column_width=True)
+        st.write("Usa el menú desplegable para navegar por las opciones.")
+        st.image("cede.png", use_container_width=True)
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             if st.button("Mapa Doctrinario"):
