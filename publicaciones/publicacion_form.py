@@ -19,19 +19,7 @@ class PublicacionForm:
             "FUERZAS ESPECIALES",
             "SELVA",
             "SOSTENIMIENTO",
-            "ESPECIALISTAS",
-            "PERSONAL",
-            "LOGÍSTICA EN GENERAL",
-            "INTENDENCIA",
-            "TRANSPORTES",
-            "MATERIAL DE GUERRA",
-            "SANIDAD",
-            "CIENCIAS DE LA EDUCACIÓN",
-            "MÚSICOS",
-            "AYUDANTÍA GENERAL",
-            "COMUNICACIÓN SOCIAL",
-            "VETERINARIA",
-            "AGROPECUARIA"
+            "ESPECIALISTAS"
         ]
 
         subcategorias_x = {
@@ -42,20 +30,8 @@ class PublicacionForm:
             "AVIACIÓN DEL EJÉRCITO": [],
             "FUERZAS ESPECIALES": [],
             "SELVA": [],
-            "SOSTENIMIENTO": ["Subcat S1", "Subcat S2", "Subcat S3"],
-            "ESPECIALISTAS": ["Subcat E1", "Subcat E2", "Subcat E3"],
-            "PERSONAL": [],
-            "LOGÍSTICA EN GENERAL": [],
-            "INTENDENCIA": [],
-            "TRANSPORTES": [],
-            "MATERIAL DE GUERRA": [],
-            "SANIDAD": [],
-            "CIENCIAS DE LA EDUCACIÓN": [],
-            "MÚSICOS": [],
-            "AYUDANTÍA GENERAL": [],
-            "COMUNICACIÓN SOCIAL": [],
-            "VETERINARIA": [],
-            "AGROPECUARIA": []
+            "SOSTENIMIENTO": ["PERSONAL", "LOGÍSTICA EN GENERAL", "INTENDENCIA", "TRANSPORTES", "MATERIAL DE GUERRA"],
+            "ESPECIALISTAS": ["SANIDAD", "CIENCIAS DE LA EDUCACIÓN", "MÚSICOS", "AYUDANTÍA GENERAL", "COMUNICACIÓN SOCIAL", "VETERINARIA", "AGROPECUARIA"],
         }
 
         categoria_x = st.selectbox("Categoría X:", categorias_x)
@@ -131,19 +107,7 @@ class PublicacionForm:
             "FUERZAS ESPECIALES",
             "SELVA",
             "SOSTENIMIENTO",
-            "ESPECIALISTAS",
-            "PERSONAL",
-            "LOGÍSTICA EN GENERAL",
-            "INTENDENCIA",
-            "TRANSPORTES",
-            "MATERIAL DE GUERRA",
-            "SANIDAD",
-            "CIENCIAS DE LA EDUCACIÓN",
-            "MÚSICOS",
-            "AYUDANTÍA GENERAL",
-            "COMUNICACIÓN SOCIAL",
-            "VETERINARIA",
-            "AGROPECUARIA"
+            "ESPECIALISTAS"
         ]
         subcategorias_x = {
             "ARTILLERÍA": [],
@@ -153,20 +117,8 @@ class PublicacionForm:
             "AVIACIÓN DEL EJÉRCITO": [],
             "FUERZAS ESPECIALES": [],
             "SELVA": [],
-            "SOSTENIMIENTO": ["Subcat S1", "Subcat S2", "Subcat S3"],
-            "ESPECIALISTAS": ["Subcat E1", "Subcat E2", "Subcat E3"],
-            "PERSONAL": [],
-            "LOGÍSTICA EN GENERAL": [],
-            "INTENDENCIA": [],
-            "TRANSPORTES": [],
-            "MATERIAL DE GUERRA": [],
-            "SANIDAD": [],
-            "CIENCIAS DE LA EDUCACIÓN": [],
-            "MÚSICOS": [],
-            "AYUDANTÍA GENERAL": [],
-            "COMUNICACIÓN SOCIAL": [],
-            "VETERINARIA": [],
-            "AGROPECUARIA": []
+            "SOSTENIMIENTO": ["PERSONAL", "LOGÍSTICA EN GENERAL", "INTENDENCIA", "TRANSPORTES", "MATERIAL DE GUERRA"],
+            "ESPECIALISTAS": ["SANIDAD", "CIENCIAS DE LA EDUCACIÓN", "MÚSICOS", "AYUDANTÍA GENERAL", "COMUNICACIÓN SOCIAL", "VETERINARIA", "AGROPECUARIA"],
         }
 
         # Recuperar valores actuales de la DB
