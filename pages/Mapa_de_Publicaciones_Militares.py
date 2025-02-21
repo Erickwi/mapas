@@ -65,7 +65,7 @@ def main():
         PublicacionForm.borrar_publicacion_form(db)
         
     elif choice == "Ver Publicaciones":
-        st.title("Ver Publicaciones")
+        st.title("📚 Ver Publicaciones")
         PublicacionForm.ver_publicaciones(db_file)
         
     elif choice == "Generar Excel":
