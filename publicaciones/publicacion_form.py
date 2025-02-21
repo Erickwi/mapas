@@ -58,7 +58,7 @@ class PublicacionForm:
         nombre = st.text_input("Nombre de la Publicación:")
 
         # Año: opción "No Publicado" + rango
-        opciones_anio = ["No Publicado"] + list(range(2018, 2031))
+        opciones_anio = list(range(2000, 2031))
         anio = st.selectbox("Año de Publicación:", opciones_anio)
 
         # Estados posibles
