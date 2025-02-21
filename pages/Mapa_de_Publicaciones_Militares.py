@@ -34,9 +34,6 @@ def main():
     # Se agregan las opciones para Manuales y Publicaciones
     menu = [
         "Inicio",
-        "Agregar Manual",
-        "Modificar Manual",
-        "Borrar Manual",
         "Agregar Publicación",
         "Modificar Publicación",
         "Borrar Publicación",
@@ -52,20 +49,6 @@ def main():
     if choice == "Inicio":
         st.title("🏠 Mapa de Publicaciones Militares")
         st.write("Usa el menú de la izquierda para navegar por las opciones.")
-        
-    elif choice == "Agregar Manual":
-        st.title("➕ Agregar Manual")
-        ManualForm.agregar_manual_form(db)
-        
-    elif choice == "Modificar Manual":
-        st.title("✏️ Modificar Manual")
-        manual_id = st.text_input("ID del Manual a Modificar:")
-        if manual_id:
-            ManualForm.modificar_manual_form(db, manual_id)
-            
-    elif choice == "Borrar Manual":
-        st.title("🗑️ Borrar Manual")
-        ManualForm.borrar_manual_form(db)
         
     elif choice == "Agregar Publicación":
         st.title("➕ Agregar Publicación")
