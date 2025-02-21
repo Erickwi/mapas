@@ -1,7 +1,7 @@
 import sqlite3
 
 class DoctrinarioDB:
-    def __init__(self, db_path="doctrinario.db"):
+    def __init__(self, db_path="../doctrinario.db"):
         """
         Inicializa la conexión a la base de datos 'doctrinario.db' 
         y crea la tabla 'publicaciones' si no existe.
