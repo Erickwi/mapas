@@ -1,15 +1,18 @@
 import sqlite3
+import os
 
 class DoctrinarioDB:
-    def __init__(self, db_path="../doctrinario.db"):
+    def __init__(self, db_path=None):
         """
         Inicializa la conexión a la base de datos 'doctrinario.db' 
         y crea la tabla 'publicaciones' si no existe.
         """
-        self.db_path = db_path
+        if db_path is None:
+            # Ajustar la ruta para que apunte a una carpeta anterior
+            self.db_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "doctrina.db")
+        else:
+            self.db_path = db_path
         self._create_table_publicaciones()
-        # Si quieres, podrías verificar/crear la tabla manuales también,
-        # pero asumes que "manuales" ya existe y no la tocas.
 
     def _create_table_publicaciones(self):
         """
