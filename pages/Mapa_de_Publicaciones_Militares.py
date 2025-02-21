@@ -66,7 +66,7 @@ def main():
         
     elif choice == "Ver Publicaciones":
         st.title("Ver Publicaciones")
-        PublicacionForm.ver_pu(db_file)
+        PublicacionForm.ver_publicaciones(db_file)
         
     elif choice == "Generar Excel":
         st.title("📊 Generar Excel")
