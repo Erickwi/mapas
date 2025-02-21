@@ -10,11 +10,11 @@ def main():
         st.image("cede.png", width=200)
     
     # Centrar los botones usando columnas
-    col1, col2 = st.columns(2)
-    with col1:
+    col1, col2, col3, col4 = st.columns(4)
+    with col2:
         if st.button("Mapa Doctrinario"):
             st.switch_page("pages/Mapa_Doctrinario.py")
-    with col2:
+    with col3:
         if st.button("Mapa de Publicaciones Militares"):
             st.switch_page("pages/Mapa_de_Publicaciones_Militares.py")
 
