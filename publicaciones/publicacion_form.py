@@ -66,7 +66,8 @@ class PublicacionForm:
         estado = st.selectbox("Estado de la Publicación:", estados)
 
         # Subproceso si está "En Generación"
-        subproceso_estado = None
+        if subproceso_estado == None:
+            subproceso_estado = "No aplica"
         if estado == "En Generación":
             subprocesos_estado = ["Investigación", "Experimentación", "Edición y Difusión"]
             subproceso_estado = st.selectbox("Subproceso del Estado:", subprocesos_estado)

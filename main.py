@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.set_page_config(page_title="Inicio", page_icon="🏠")
+
 def main():
     st.title("🏠 Bienvenido al Mapa Doctrinario del Ejército")
     st.write("Usa los botones para navegar por las opciones.")
