@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
 
 class PublicacionForm:
 
@@ -262,6 +264,29 @@ class PublicacionForm:
         publicaciones = db.fetch_all_publicaciones()
         if publicaciones:
             st.write("### Publicaciones")
-            st.table(publicaciones)
+            df = pd.DataFrame(publicaciones)
+
+            # Renombrar columnas para mostrarlas de forma clara en Streamlit
+            df.rename(columns={
+                "categoria_x": "Categoría X",
+                "subcategoria_x": "Subcategoría X",
+                "categoria_y": "Categoría Y",
+                "nombre": "Nombre de la Publicación",
+                "anio": "Año",
+                "estado": "Estado",
+                "subproceso_estado": "Subproceso Estado"
+            }, inplace=True)
+
+            # Formatear correctamente el año (eliminar la coma en valores numéricos)
+            df["Año"] = df["Año"].astype(str).str.replace(",", "")
+
+            # Reemplazar "Desconocido" en "Subproceso Estado" por "No Aplica"
+            df["Subproceso Estado"] = df["Subproceso Estado"].replace("Desconocido", "No Aplica")
+
+            # Eliminar las columnas "ID" y "id_categoria"
+            df = df.drop(columns=["ID", "id_categoria"], errors='ignore')
+
+            # Mostrar la tabla
+            st.dataframe(df)
         else:
             st.write("No hay publicaciones disponibles.")

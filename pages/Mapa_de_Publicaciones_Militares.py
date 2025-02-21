@@ -37,7 +37,7 @@ def main():
         "Agregar Publicación",
         "Modificar Publicación",
         "Borrar Publicación",
-        "Ver Mapa",
+        "Ver Publicaciones",
         "Generar Excel"
     ]
     choice = st.sidebar.radio("Seleccione una opción:", menu)
