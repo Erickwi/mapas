@@ -253,3 +253,15 @@ class PublicacionForm:
                 st.success(f"✅ Publicación con ID {publicacion_id} eliminada correctamente.")
             else:
                 st.error(f"❌ No se encontró una publicación con ID {publicacion_id}.")
+
+    @staticmethod
+    def ver_publicaciones(db):
+        """
+        Muestra todas las publicaciones en una tabla.
+        """
+        publicaciones = db.fetch_all_publicaciones()
+        if publicaciones:
+            st.write("### Publicaciones")
+            st.table(publicaciones)
+        else:
+            st.write("No hay publicaciones disponibles.")

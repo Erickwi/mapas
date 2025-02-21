@@ -64,9 +64,9 @@ def main():
         st.title("🗑️ Borrar Publicación")
         PublicacionForm.borrar_publicacion_form(db)
         
-    elif choice == "Ver Mapa":
-        st.title("🗺️ Mapa Doctrinario Filtrado")
-        Visualization.mostrar_mapa_filtrado(db_file)
+    elif choice == "Ver Publicaciones":
+        st.title("Ver Publicaciones")
+        PublicacionForm.ver_pu(db_file)
         
     elif choice == "Generar Excel":
         st.title("📊 Generar Excel")

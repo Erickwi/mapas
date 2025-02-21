@@ -66,6 +66,19 @@ class DoctrinarioDB:
             return dict(row)
         return None
 
+    def fetch_all_publicaciones(self):
+        """
+        Devuelve una lista de diccionarios con todas las publicaciones.
+        """
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row  # Para devolver diccionarios
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM publicaciones")
+        rows = cursor.fetchall()
+        conn.close()
+
+        return [dict(row) for row in rows]
+
     def update_publicacion(self, publicacion_id, categoria_x, subcategoria_x, 
                            categoria_y, nombre, anio, estado, subproceso_estado):
         """
