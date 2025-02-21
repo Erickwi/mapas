@@ -59,14 +59,14 @@ def main():
         publicacion_id = st.text_input("ID de la Publicación a Modificar:")
         if publicacion_id:
             PublicacionForm.modificar_publicacion_form(db, publicacion_id)
+
+    elif choice == "Ver Publicaciones":
+        st.title("📚 Ver Publicaciones")
+        PublicacionForm.ver_publicaciones(db)
             
     elif choice == "Borrar Publicación":
         st.title("🗑️ Borrar Publicación")
         PublicacionForm.borrar_publicacion_form(db)
-        
-    elif choice == "Ver Publicaciones":
-        st.title("📚 Ver Publicaciones")
-        PublicacionForm.ver_publicaciones(db)
         
     elif choice == "Generar Excel":
         st.title("📊 Generar Excel")
