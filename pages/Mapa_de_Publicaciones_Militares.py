@@ -1,5 +1,5 @@
 import streamlit as st
-from database import DatabaseManager
+from publicaciones.database import DoctrinarioDB
 from publicaciones.publicacion_form import PublicacionForm
 from visualization import Visualization
 from excel_generator import ExcelGenerator
@@ -43,7 +43,7 @@ def main():
     choice = st.sidebar.radio("Seleccione una opción:", menu)
 
     db_file = "doctrina.db"  # Ruta al archivo de la base de datos SQLite
-    db = DatabaseManager(db_file)
+    db = DoctrinarioDB(db_file)
 
     # Navegar entre las opciones
     if choice == "Inicio":
