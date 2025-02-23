@@ -37,11 +37,10 @@ class PublicacionForm:
         categoria_x = st.selectbox("Categoría X:", categorias_x)
 
         # Mostrar subcategoría sólo si la categoría X la tiene
-        posibles_subcats = subcategorias_x.get(categoria_x, [])
-        if posibles_subcats:
-            subcategoria_x = st.selectbox("Subcategoría X:", posibles_subcats)
-        else:
-            subcategoria_x = ""
+        posibles_subcats = subcategorias_x.get(categoria_x, ["No Aplica"])
+        subcategoria_x = st.selectbox("Subcategoría X:", posibles_subcats)
+        if subcategoria_x == "No Aplica":
+            subcategoria_x = "No Aplica"
 
         # Ejemplo de categorías Y (ajusta según tu proyecto)
         categorias_y = [
