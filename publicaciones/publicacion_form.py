@@ -164,11 +164,7 @@ class PublicacionForm:
         # Año
         opciones_anio = list(range(2000, 2031))
         # Convertir a str para compararlo con la lista de opciones
-        if str(anio_value) not in [str(a) for a in opciones_anio]:
-            anio_value = "No Publicado"
-        anio_index = [str(a) for a in opciones_anio].index(str(anio_value))
-        anio = st.selectbox("Año de Publicación:", opciones_anio, index=anio_index)
-
+        anio = st.selectbox("Año de Publicación:", opciones_anio)
         # Estado
         estados = ["Publicado", "Actualización", "En Generación", "Virtualizado", "Por Generar"]
         if estado_value not in estados:
