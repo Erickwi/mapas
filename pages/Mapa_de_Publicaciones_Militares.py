@@ -4,6 +4,7 @@ from publicaciones.publicacion_form import PublicacionForm
 from visualization import Visualization
 from excel_generator import ExcelGenerator
 
+st.set_page_config(page_title="Mapa de Publicaciones militares")
 # Estilo personalizado para los colores de la interfaz
 st.markdown(
     """

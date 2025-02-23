@@ -50,76 +50,8 @@ class Visualization:
         # Eliminar las columnas "ID" y "id_categoria"
         df = df.drop(columns=["ID", "id_categoria"], errors='ignore')
 
-        # 🔹 Agregando filtros en el menú lateral (sidebar)
-        orden_categoria_y = [
-            "Manuales Fundamentales del Ejército",
-            "Manuales Fundamentales de Referencia del Ejército",
-            "Manuales de Campaña del Ejército",
-            "Manuales de Técnicas del Ejército",
-            "Manuales de Educación Militar",
-            "Manuales de Mantenimiento del Ejército",
-            "Manuales de Administrativo Funcional"
-        ]
-
-        # Ordenar las categorías Y según el orden personalizado
-        categorias_y_ordenadas = sorted(
-            df["Categoría Y"].unique(),
-            key=lambda x: orden_categoria_y.index(x) if x in orden_categoria_y else len(orden_categoria_y)
-        )
-
-        # 🔹 Agregando filtros en el menú lateral (sidebar)
-        st.sidebar.header("🔍 Filtros")
-        
-        # Mostrar Categoría Y primero con orden personalizado
-        categorias_y = st.sidebar.multiselect(
-            "Categoría Principal:",
-            options=categorias_y_ordenadas,
-            help="Seleccione la categoría principal del manual"
-        )
-
-        # Resto de filtros
-        categorias_x = st.sidebar.multiselect(
-            "Categoría:",
-            sorted(df["Categoría X"].unique())
-        )
-        
-        subcategorias_x = st.sidebar.multiselect(
-            "Subcategoría:",
-            sorted(df["Subcategoría X"].unique())
-        )
-
-        # Separador visual
-        st.sidebar.markdown("---")
-        
-        años = st.sidebar.multiselect(
-            "Año:",
-            sorted(df["Año"].unique(), reverse=True)
-        )
-        
-        estados = st.sidebar.multiselect(
-            "Estado:",
-            sorted(df["Estado"].unique())
-        )
-
-        # 🔹 Aplicar filtros en orden
-        if categorias_y:
-            df = df[df["Categoría Y"].isin(categorias_y)]
-        if categorias_x:
-            df = df[df["Categoría X"].isin(categorias_x)]
-        if subcategorias_x:
-            df = df[df["Subcategoría X"].isin(subcategorias_x)]
-        if años:
-            df = df[df["Año"].isin(años)]
-        if estados:
-            df = df[df["Estado"].isin(estados)]
-
-        # 🔹 Si no hay resultados tras los filtros, mostrar mensaje
-        if df.empty:
-            st.warning("No se encontraron datos con los filtros aplicados.")
-            return
-
-        # 🔹 Mostrar la tabla filtrada
-        st.write("### 🗺️ Mapa Doctrinario Filtrado")
+        # 🔹 Mostrar la tabla
+        st.write("### 🗺️ Mapa Doctrinario")
         st.dataframe(df)
 
 # Uso de la visualización

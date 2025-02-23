@@ -4,6 +4,7 @@ from forms import ManualForm
 from visualization import Visualization
 from excel_generator import ExcelGenerator
 
+st.set_page_config(page_title="Mapa Doctrinario")
 # Estilo personalizado para los colores de la interfaz
 st.markdown(
     """
