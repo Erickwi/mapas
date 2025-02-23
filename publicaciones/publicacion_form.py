@@ -162,7 +162,7 @@ class PublicacionForm:
         nombre = st.text_input("Nombre de la Publicación:", value=nombre_value)
 
         # Año
-        opciones_anio = ["No Publicado"] + list(range(2018, 2031))
+        opciones_anio = list(range(2000, 2031))
         # Convertir a str para compararlo con la lista de opciones
         if str(anio_value) not in [str(a) for a in opciones_anio]:
             anio_value = "No Publicado"
